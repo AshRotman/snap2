@@ -1,0 +1,66 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+  height: 100%;
+  background-image: url(../images/main-bg.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.warning {
+  border-color: red;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.jumbotron {
+  background: none;
+}
+
+.jumbotron .container {
+position: relative;
+top: 130px;
+}
+
+.logo {
+  z-index: -1;
+  position: absolute;
+  padding-left: 280px;
+  padding-bottom: 400px;
+  top: 132px;
+}
+.smallLogo {
+  text-align: center;
+}
+
+#sampleFile {
+  opacity: 0;
+}
+
+
+
+@media (max-width : 465px) {
+  .largeScreen{display: none;}
+  .smallScreen{display: block;}
+  .logo{display: none;}
+  .container{text-align: center;}
+}
+@media (min-width: 466px) {
+  .largeScreen{display: block;}
+  .smallScreen{display: none;}
+}
+
