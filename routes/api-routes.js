@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require("path");
 const db = require("../models");
-
+const faker = require('faker');
+var json2csv = require('json2csv');
 
 module.exports = (app) => {
 
@@ -13,6 +14,29 @@ module.exports = (app) => {
     })
     .then((result) => {
       res.json(result);
+    })
+  })
+
+  app.get('/user/:id/exportProspects', (req,res) => {
+    db.Prospect.findAll({
+      where: {UserId: req.params.id},
+      order: [['createdAt', 'DESC']]
+    })
+    .then((result) => {
+      var fields = 
+      ['firstName', 'lastName', 'title', 'company', 'email', 'mobile',  'work', 'address', 'city', 'state', 'zip'];
+      var opts = {
+        data: result,
+        fields: fields,
+        
+      };
+      var csv = json2csv(opts);
+       
+      fs.writeFile('public/file.csv', csv, function(err) {
+        if (err) throw err;
+        console.log('file saved');
+      });
+      res.send('success');
     })
   })
 
@@ -80,7 +104,10 @@ module.exports = (app) => {
 
   app.delete('/user/:id/deleteProspect', (req,res) => {
     db.Prospect.destroy({
-      where: {id: req.body.id}
+      where: {
+        id: req.body.id,
+        UserId: req.params.id
+      }
     })
     .then(result => res.send("success"))
     .catch((err) => res.send("error"));
