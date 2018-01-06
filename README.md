@@ -1,8 +1,6 @@
 SnapBiz
 Mobile Responsive Web App for capturing business card images and turning the text into user data, which can be exported via csv into a CRM of the user's choosing.
 
-
-
 Authors
 Fred Lintz - (https://github.com/fredlintz5)
 Ash Rotman - (https://github.com/AshRotman)
